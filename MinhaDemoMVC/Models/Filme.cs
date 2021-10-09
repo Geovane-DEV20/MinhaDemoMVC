@@ -31,6 +31,7 @@ namespace MinhaDemoMVC.Models
         public int Valor { get; set; }
 
         [Required(ErrorMessage = "Preencha o campo Avaliação")]
+        [Display(Name= "Avaliação")]
         [RegularExpression(@"^[0-5]*$", ErrorMessage = "Somente números")]
         public int Avaliacao { get; set; }
     }
