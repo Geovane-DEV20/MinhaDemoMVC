@@ -15,6 +15,7 @@ namespace MinhaDemoMVC.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
+
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -28,19 +29,40 @@ namespace MinhaDemoMVC.Controllers
 
         public IActionResult Index(string id, Guid categoria)
         {
-            return View();
+            var filme = new Filme
+            {
+                Título = "Oi",
+                DataLancamento = DateTime.Now,
+                Genero = null,
+                Avaliacao = 10,
+                Valor = 20000
+            };
+
+            return RedirectToAction("Privacy", filme);
+            
         }
 
         [Route("privacidade")]
         [Route("politica-de-privacidade")]
-        public IActionResult Privacy()
+        public IActionResult Privacy(Filme filme) //O ModelState têm dois propósitos: Armazenar o valor submetido ao servidor. Armazenar os erros de validação associados com esses valores.
         {
+            if(ModelState.IsValid)
+            {
 
-            var fileBytes = System.IO.File.ReadAllBytes(@"C:\arquivo.txt");
-            var fileName = "ola.txt";
-            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+            }
+
+            foreach (var error in ModelState.Values.SelectMany(m => m.Errors)) // "SelectMany" Vai buscar somentes os erros.
+            {
+                Console.WriteLine(error.ErrorMessage);
+            }
+            
+            
+            //var fileBytes = System.IO.File.ReadAllBytes(@"C:\arquivo.txt");
+            //var fileName = "ola.txt";
+            //return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
 
             //return Json("{'nome':'Geovane'}");
+            return View();
         } 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

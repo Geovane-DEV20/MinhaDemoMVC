@@ -28,7 +28,7 @@ namespace MinhaDemoMVC.Models
         [Range(1,1000, ErrorMessage = "Valor de 1 a 1000")]
         [Required(ErrorMessage = "Preencha o campo valor")]
         [Column(TypeName = "decimal(18,2)")]
-        public string Valor { get; set; }
+        public int Valor { get; set; }
 
         [Required(ErrorMessage = "Preencha o campo Avaliação")]
         [RegularExpression(@"^[0-5]*$", ErrorMessage = "Somente números")]
