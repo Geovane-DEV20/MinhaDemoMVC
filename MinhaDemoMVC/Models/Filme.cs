@@ -26,7 +26,7 @@ namespace MinhaDemoMVC.Models
         [StringLength(30, ErrorMessage = "Máximo de 30 caracteres"), Required(ErrorMessage = "O campo genero é requerido")]
         public string Genero { get; set; }
 
-        [Range(1,1000, ErrorMessage = "Valor de 1 a 1000")] //Limite de valores
+        [Range(1, 1000, ErrorMessage = "Valor de 1 a 1000")] //Limite de valores
         [Required(ErrorMessage = "Preencha o campo valor")]
         [Column(TypeName = "decimal(18,2)")]
         public int Valor { get; set; }
